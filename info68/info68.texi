@@ -1,0 +1,289 @@
+\input texinfo @c -*-texinfo-*-
+
+@c %**start of header
+@include version.texi
+@include package.texi
+@setfilename info68.info
+@settitle @command{@value{PACKAGE}}: @value{DESCRIPTION}
+@finalout @c overfull hbox fix ?
+@c %**end of header
+
+@dircategory sc68 project
+@direntry
+* @value{PACKAGE}: (sc68).             @value{DESCRIPTION}.
+@end direntry
+
+@synindex cp ky
+@setchapternewpage odd
+
+@ifinfo
+This is Edition @value{EDITION} of @cite{The @command{@value{PACKAGE}}
+Manual}, for @command{@value{PACKAGE}} version @value{VERSION}, last
+updated @value{UPDATED}.
+
+@*Copyright @copyright{} 1998-2014 Benjamin Gerard
+
+Permission is granted to make and distribute verbatim copies of
+this manual upon condition that the  provided the copyright notice
+and this permission notice are preserved on all copies.
+@end ifinfo
+
+@titlepage
+@title @value{PACKAGE}
+@sp 1
+@subtitle Edition @value{EDITION}, for @command{@value{PACKAGE}} version @value{VERSION} @value{UPDATED}
+@author Benjamin Gerard
+@end titlepage
+
+@ifinfo
+@node Top, Description, (dir), (dir)
+@top @command{info68}: @value{DESCRIPTION}
+
+This manual documents how to use version @value{VERSION} of
+@command{info68}, a program to print formatted information on sc68
+files.
+
+@menu
+* Description::
+* Invoking info68::
+* Examples::
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Invokation
+
+* Options::
+* Track-list::
+* Format-string::
+
+Format-string
+
+* Disk commands::               Print info about disk
+* Track commands::              Print info about current track
+* Misc commands::               Print special chars
+* Tags commands::               Print generic meta tags
+
+@end detailmenu
+@end menu
+
+@center manual for @value{PACKAGE} version @value{VERSION} edited on @value{UPDATED}
+
+@end ifinfo
+
+@c **********************************************************************
+@c * DESCRIPTION
+@c **********************************************************************
+
+@node Description, Invoking info68, Top, Top
+@unnumbered Description
+
+@command{info68} is a program to print formatted tags contained by
+sc68 files.
+     
+@node Invoking info68, Examples, Description, Top
+@unnumbered Invoking info68
+
+@unnumberedsec Synopsis
+@display
+@command{info68 [Options] [--] <URI> ([Track-list] Format-string ) ...}
+@command{info68 --help}
+@command{info68 --version}
+@end display
+
+Opens the sc68 file located by @dfn{<URI>} and prints the
+@dfn{Format-string} for each tracks defined by the @dfn{Track-list}.
+
+@menu
+* Options::
+* Track-list::
+* Format-string::
+@end menu
+
+@c **********************************************************************
+@c * OPTIONS
+@c **********************************************************************
+
+@node Options, Track-list, Invoking info68, Invoking info68
+@unnumberedsec Options
+
+@multitable @columnfractions 0.1 0.3 0.6
+@item
+@tab  @option{--}
+@tab  Break option parsing
+@item @option{-h}
+@tab  @option{--help}
+@tab  Display help message and exit
+@item @option{-V}
+@tab  @option{--version}
+@tab  Display build date and exit.
+@item @option{-o}
+@tab  @option{--output=<uri>}
+@tab  Set output (default is stdout) 
+@item @option{-A}
+@tab  @option{--all}
+@tab  Display all information and tags
+@end multitable
+
+@menu
+* Track-list::
+* Format-string::
+@end menu
+
+@node Track-list, Format-string, Options, Invoking info68
+@unnumberedsec Track-list
+track-list executes the next format string for all listed tracks one
+after another in the given order. Track number 0 in track-list is
+replaced by the last track number (equal to the number of track).
+
+@unnumberedsubsec Syntax
+@option{-DIGIT[[,DIGIT]|[-DIGIT]]*}
+
+@unnumberedsubsec Examples
+@table @samp
+@item @option{-1,15,4-6}
+will sequence tracks 1,15,4,5 and 6 in this order.
+@item @option{-1-0}
+will sequence all tracks in incremental order.
+@end table
+
+@node Format-string,  , Track-list, Invoking info68
+@unnumberedsec Format-string
+
+The format string is printed for all tracks listed by the
+@ref{Track-list} command (or the default track if track-list is
+omit). Special %-format commands may be inserted in the format
+string. These commands are composed of a percent (%) followed by an
+optionnal length modifier (a la printf) and a code character which
+defines the function of the %-command. There are 4 types of
+%-commands:
+
+@menu
+* Disk commands::               Print info about disk
+* Track commands::              Print info about current track
+* Misc commands::               Print special chars
+* Tags commands::               Print generic meta tags
+@end menu
+
+@node Disk commands, Track commands, Format-string, Format-string
+@unnumberedsubsec Disk commands
+
+The disk commands display information on the disk (album) such as
+album name, number of track, total play time ...
+
+@multitable @columnfractions 0.1 0.9
+@item @option{%#}
+@tab  number of tracks
+@item @option{%?}
+@tab  default track
+@item @option{%N}
+@tab  disk (album) name
+@item @option{%A}
+@tab  default track author
+@item @option{%C}
+@tab  default track composer
+@item @option{%P}
+@tab  default ripper name
+@item @option{%V}
+@tab  default converter name
+@item @option{%T}
+@tab  disk total time in second
+@item @option{%Y}
+@tab  disk total time in ``TT MM:SS'' format
+@item @option{%H}
+@tab  all tracks ORed hardware flags
+@item @option{%F}
+@tab  file format (sc68 or sndh)
+@item @option{%~}
+@tab  file hash code (unic-id)
+@item @option{%U}
+@tab  input URI
+@end multitable
+
+@node Track commands, Misc commands, Disk commands, Format-string
+@unnumberedsubsec Track commands
+
+The track commands print information according to the current
+track. The current track is the one being processed by the track-list
+command or the default track if no track-list has been specified.
+
+@multitable @columnfractions 0.1 0.9
+@item @option{%&}
+@tab  track number
+@item @option{%n}
+@tab  track name
+@item @option{%a}
+@tab  track author
+@item @option{%c}
+@tab  track composer
+@item @option{%p}
+@tab  track ripper name
+@item @option{%v}
+@tab  converter name
+@item @option{%r}
+@tab  replay name
+@item @option{%t}
+@tab  track  time in second
+@item @option{%y}
+@tab  track time in ``TT MM:SS'' format
+@item @option{%f}
+@tab  replay frequency (in hz)
+@item @option{%n}
+@tab  track duration in frames
+@item @option{%@@}
+@tab  load address (hexadecimal)
+@item @option{%h}
+@tab  track hardware flags [YSA], uppercase ON, lowercase OFF
+      Y:YM%2149 S:STE A:Amiga
+@end multitable
+
+@node Misc commands, Tags commands, Track commands, Format-string
+@unnumberedsubsec Misc commands
+@multitable @columnfractions 0.1 0.9
+@item @option{%L}
+@tab  Display a newline character
+@item @option{%0}
+@tab  Display zero/null character
+@item @option{%%}
+@tab  Display a percent character
+@end multitable
+
+@node Tags commands,  , Misc commands, Format-string
+@unnumberedsubsec Tags commands
+@multitable @columnfractions 0.2 0.8
+@item @option{%@{tag@rbracechar{}}
+@tab  Display a meta tag value. Use uppercase first letter to address
+      disk tag and lowercase to address current track tag
+@end multitable
+
+@c **********************************************************************
+@c * EXAMPLES
+@c **********************************************************************
+
+@node Examples,  , Invoking info68, Top
+@unnumbered Examples
+
+@example
+info68 BMX_Simulator.sndh
+@end example
+
+Opens the file @file{BMX_Simulator.sndh} and exit without further
+process. This is a good way to just test whether <URI> is a valid sc68
+file/resource or not.
+
+@example
+info68 \
+ 'sc68://music/Jochen Hippel (Mad Max)/0/Wings Of Death/' \
+ '-1,5,4-6' \
+ '> %03&/%# %N - %a - %n%L'
+
+> 001/10 Wings Of Death - Jochen Hippel (Mad Max) - Level #1
+> 005/10 Wings Of Death - Jochen Hippel (Mad Max) - Level #5
+> 004/10 Wings Of Death - Jochen Hippel (Mad Max) - Level #4
+> 005/10 Wings Of Death - Jochen Hippel (Mad Max) - Level #5
+> 006/10 Wings Of Death - Jochen Hippel (Mad Max) - Level #6
+@end example
+
+@page
+@contents
+@bye

@@ -1,0 +1,43 @@
+                     sc68 - foobar2000 component
+
+                   It is part of the sc68 project.
+
+               (C) COPYRIGHT 1998-2015 Benjamin Gerard
+
+
+*Synopsis*                                   
+
+  foobar2000 is an advanced freeware audio player for the Windows
+  platform.
+
+  This project is an component for foobar2000 to play sc68 compatible
+  files.
+
+
+*Important*
+
+  You need to install the foobar2000 SDK somewhere and to set an
+  environment variable *FB2KSDK* to that location. Beware the SDK
+  archive does not have a parent directory. You should create one with
+  whatever name suit you and set *FB2KSDK* to that directory path.
+
+
+*Files*
+
+  sc68-fb2k.sln ................ MsVS express 2010 solution
+  foo_sc68/ .................... sc68 component source files location
+  lib/shared.lib ............... A copy of the foobar2000 SDK file
+  Debug/*.lib .................. Pre-built foobar2000 SDK libs (debug conf)
+  release/*.lib ................ Pre-built foobar2000 SDK libs (release conf)
+
+
+*Links*
+
+  sc68 website
+       <http://sc68.atari.org>
+
+  sc68 development project
+       <http://sourceforge.net/projects/sc68>
+
+  foobar2000
+       <http://www.foobar2000.org/>

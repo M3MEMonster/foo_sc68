@@ -1,0 +1,44 @@
+Name:		as68
+Group:		Applications/Multimedia
+Version:	@VERSION@
+Release:	1
+Copyright:	GPL-2
+Summary:	M68000 macro assembler
+URL:		@SC68URL@/
+Source:		%{name}-%{version}.tar.bz2
+Buildroot:	%{_tmppath}/%{name}-root
+
+%description
+as68 is a macro assembler for 68000 processor family. It is part of the
+sc68 project <@SC68URL@/>.
+
+%prep
+rm -rf $RPM_BUILD_ROOT
+
+%setup -q
+
+%build
+export CFLAGS=$RPM_OPT_FLAGS
+
+./configure \
+	--prefix=%{_prefix} \
+	--mandir=%{_mandir} \
+	--infodir=%{_infodir}
+make
+
+%install
+make install-strip DESTDIR=$RPM_BUILD_ROOT
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr (-,root,root)
+%doc AUTHORS ChangeLog COPYING NEWS README
+%{_bindir}/*
+%{_mandir}/man1/*
+%{_infodir}/*
+
+%changelog
+* Tue Dec 19 22:02:33 CET 2006 Benjamin Gerard <ben@sashipa.com>
+- initial RPM

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="7.1\lib\strmbasd-mb.lib" />
+    <Library Include="7.1\lib\strmbasd.lib" />
+    <Library Include="7.1\lib\strmbase-mb.lib" />
+    <Library Include="7.1\lib\strmbase.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="7.1\include\amextra.h" />
+    <ClInclude Include="7.1\include\amfilter.h" />
+    <ClInclude Include="7.1\include\cache.h" />
+    <ClInclude Include="7.1\include\checkbmi.h" />
+    <ClInclude Include="7.1\include\combase.h" />
+    <ClInclude Include="7.1\include\cprop.h" />
+    <ClInclude Include="7.1\include\ctlutil.h" />
+    <ClInclude Include="7.1\include\ddmm.h" />
+    <ClInclude Include="7.1\include\dllsetup.h" />
+    <ClInclude Include="7.1\include\dxmperf.h" />
+    <ClInclude Include="7.1\include\fourcc.h" />
+    <ClInclude Include="7.1\include\measure.h" />
+    <ClInclude Include="7.1\include\msgthrd.h" />
+    <ClInclude Include="7.1\include\mtype.h" />
+    <ClInclude Include="7.1\include\outputq.h" />
+    <ClInclude Include="7.1\include\perflog.h" />
+    <ClInclude Include="7.1\include\perfstruct.h" />
+    <ClInclude Include="7.1\include\pstream.h" />
+    <ClInclude Include="7.1\include\pullpin.h" />
+    <ClInclude Include="7.1\include\refclock.h" />
+    <ClInclude Include="7.1\include\reftime.h" />
+    <ClInclude Include="7.1\include\renbase.h" />
+    <ClInclude Include="7.1\include\schedule.h" />
+    <ClInclude Include="7.1\include\seekpt.h" />
+    <ClInclude Include="7.1\include\source.h" />
+    <ClInclude Include="7.1\include\streams.h" />
+    <ClInclude Include="7.1\include\strmctl.h" />
+    <ClInclude Include="7.1\include\sysclock.h" />
+    <ClInclude Include="7.1\include\transfrm.h" />
+    <ClInclude Include="7.1\include\transip.h" />
+    <ClInclude Include="7.1\include\videoctl.h" />
+    <ClInclude Include="7.1\include\vtrans.h" />
+    <ClInclude Include="7.1\include\winctrl.h" />
+    <ClInclude Include="7.1\include\winutil.h" />
+    <ClInclude Include="7.1\include\wxdebug.h" />
+    <ClInclude Include="7.1\include\wxlist.h" />
+    <ClInclude Include="7.1\include\wxutil.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F6D5883B-D3D6-44CA-BB91-D778FB99B932}</ProjectGuid>
+    <RootNamespace>baseclasses</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

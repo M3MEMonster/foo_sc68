@@ -1,0 +1,25 @@
+.\" @configure_input@
+.\"
+.\" Man page for @PACKAGE_NAME@
+.\"
+.TH INFO68 1 @PACKAGE_VERSION@
+.LO 1
+.SH NAME
+@PACKAGE_NAME@ \- @NAME@
+@SYNOPSIS@
+.SH "DESCRIPTION"
+This man page was generated from the file \fI@PACKAGE_NAME@.texi\fR.
+
+@INTRO@
+
+@DESCRIPTION@
+@OPTIONS@
+@TRACKLIST@
+@FORMAT@
+@EXAMPLES@
+.SH AUTHORS
+@AUTHORS@
+.SH COPYING
+@COPYING@
+.SH "SEE ALSO"
+@SEEALSO@

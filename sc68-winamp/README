@@ -1,0 +1,60 @@
+                     sc68 - winamp input plugin
+
+                   It is part of the sc68 project.
+
+               (C) COPYRIGHT 1998-2015 Benjamin Gerard
+
+
+*Synopsis*                                   
+
+  winamp is an old well known media player for Windows platforms.
+
+  This project is an input plugin for winamp 5 to play sc68 compatible
+  files. It's available for GNU/autotools and Microsoft Visual Studio.
+
+  Winamp does not natively handle multi-track per file for this reason
+  it's not the best player for listening soundchip musics that
+  traditionally have more than one music per file. This plugin will
+  (or not if disabled) hook the previous/next track commands to jump
+  to the previous/next song in the file.
+
+
+*Important*
+
+  You need to download and extract the winamp SDK.
+  MsVC users:
+  - Set an environment variable *WASDK* to the location of the SDK.
+  - The path to Winamp directory is currently hard-coded which is a
+    bother if you don't use a 64bit Windows or did not install winamp
+    in the default location (C:\Program Files (x86)\Winamp). You'll
+    might need to edit the custom post build step that copy the DLL
+    directly into that directory.
+  GNU/autotools users:
+  - The compilation has been tested using Cygwin32 (should work with
+    Cygwin64 too) using i686-w64-mingw32 toolchain. Use the configure options
+    --with-winamp-sdk and --with-winamp-dir to setup the locations properly.
+  > make winamp
+    Install the plugin in the winamp directory (no stripping).
+  > make install or install-strip
+    Install the plugin traditionally in the specified location
+    (--prefix or whatever). this is how the sc68 installer is built.
+
+
+*Files*
+
+  sc68-winamp.sln ............. MsVS express 2010 solution
+  sc68-winamp.vcxproj ......... MsVS express 2010 project
+  in_sc68.c ................... Main source code for the plugin
+  wasc68.h .................... Main header file.
+
+
+*Links*
+
+  sc68 website
+       <http://sc68.atari.org>
+
+  sc68 development project
+       <http://sourceforge.net/projects/sc68>
+
+  winamp
+       <http://www.winamp.com/>

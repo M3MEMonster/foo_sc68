@@ -1,0 +1,83 @@
+﻿Build started 2026/2/15 21:12:03.
+     1>Project "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\foo_sc68\foo_sc68.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "_x86-Release\foo_sc68.lastbuildstate".
+       InitializeBuildStatus:
+         Touching "_x86-Release\foo_sc68.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\/../file68" /I"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\/../libsc68" /I"D:\wykPrivacy\little_tools\foobar2000SDK\2015-01-04\foobar2000\SDK" /Zi /nologo /W3 /WX- /MP /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D FOO_SC68_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /MT /GS- /Gy /fp:fast /fp:except- /Zc:wchar_t /Zc:forScope /GR- /openmp- /Fo"_x86-Release\\" /Fd"_x86-Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt cmenu_sc68.cpp fb2k_sc68.cpp initquit_sc68.cpp input_sc68.cpp pref_sc68.cpp vfs_sc68.cpp
+         cmenu_sc68.cpp
+         fb2k_sc68.cpp
+         initquit_sc68.cpp
+         input_sc68.cpp
+         pref_sc68.cpp
+         vfs_sc68.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"_x86-Release\resource.res" ..\..\libsc68\dial68\winui\resource.rc 
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"_x86-Release\pref_sc68.res" pref_sc68.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:NONE /OUT:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\foo_sc68\/../lib/Release" /LIBPATH:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\foo_sc68\/../lib" /LIBPATH:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\foo_sc68\/../../sc68-msvc/zlib" "zlib-mt.lib" shared.lib shlwapi.lib pfc.lib foobar2000_component_client.lib foobar2000_SDK.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"_x86-Release\foo_sc68.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.lib" /MACHINE:X86 /DLL "_x86-Release\resource.res"
+         "_x86-Release\pref_sc68.res"
+         "_x86-Release\cmenu_sc68.obj"
+         "_x86-Release\fb2k_sc68.obj"
+         "_x86-Release\initquit_sc68.obj"
+         "_x86-Release\input_sc68.obj"
+         "_x86-Release\pref_sc68.obj"
+         "_x86-Release\vfs_sc68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68.lib"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\api68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\conf68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\dial68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\dial_conf.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\dial_finf.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\dial_tsel.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\winui_dlg.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\winui_rsc.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\emu68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\error68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\getea68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\inst68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\ioplug68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\lines68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\mem68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\io68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\mfpemul.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\mfp_io.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\mwemul.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\mw_io.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\paulaemul.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\paula_io.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\shifter_io.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\ymemul.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\ym_blep.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\ym_dump.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\ym_envel.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\ym_io.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\ym_puls.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\libsc68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\mixer68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68\basename.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\unice68\unice68_pack.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\unice68\unice68_unpack.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\unice68\unice68_version.obj"
+            Creating library D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.lib and object D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.exp
+         Generating code
+         Finished generating code
+         foo_sc68.vcxproj -> D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.dll;#2" /manifest "_x86-Release\foo_sc68.dll.intermediate.manifest"
+       PostBuildEvent:
+         Description: Copy foo_sc68.dll to foobar install
+         copy "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.dll" "C:\Program Files (x86)\foobar2000\components\foo_sc68.dll"
+         
+         :VCEnd
+         拒绝访问。
+         已复制         0 个文件。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(113,5): error MSB3073: The command "copy "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\foo_sc68.dll" "C:\Program Files (x86)\foobar2000\components\foo_sc68.dll"
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(113,5): error MSB3073: 
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(113,5): error MSB3073: :VCEnd" exited with code 1.
+     1>Done Building Project "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\foo_sc68\foo_sc68.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:04.94

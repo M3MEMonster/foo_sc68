@@ -1,0 +1,268 @@
+\input texinfo @c -*-texinfo-*-
+
+@c %**start of header
+@setfilename as68.info
+@include version.texi
+@include package.texi
+@settitle @command{as68}: @value{DESCRIPTION}
+@finalout
+@c %**end of header
+
+@dircategory @value{INFOCAT}
+@direntry
+* as68: (as68).                 @value{DESCRIPTION}.
+@end direntry
+
+@synindex cp ky
+@setchapternewpage odd
+
+@ifinfo
+This is Edition @value{EDITION} of @cite{The @command{as68} Manual},
+for as68 version @value{VERSION}, last updated @value{UPDATED}.
+@ignore
+@c !BEGIN INTRO
+@c !END INTRO
+@end ignore
+
+@c !BEGIN COPYING
+Copyright @copyright{} 1993 Vincent Penne
+@*Copyright @copyright{} 1999 Benjamin Gerard
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation;
+@c !END COPYING
+@*Visit @uref{http://www.gnu.org/licenses/fdl.html}
+
+@end ifinfo
+
+@titlepage
+@title @value{PACKAGE}
+@subtitle @value{DESCRIPTION}
+@sp 1
+@subtitle Edition @value{EDITION}, for as68 version @value{VERSION}
+@subtitle @value{UPDATED}
+@c !BEGIN AUTHORS
+@author Vincent Penne
+@author Benjamin Gerard
+@c !END AUTHORS
+@end titlepage
+@c @page
+
+@ifinfo
+@node Top, History, (dir), (dir)
+@top @command{as68}:  @value{DESCRIPTION}
+
+The @command{as68} program is
+@c !BEGIN NAME
+a very fast Motorola 68000 macro assembler.
+@c !END NAME
+
+@menu
+* History::                     A brief history of as68
+* As68 Program::                The @command{as68} Program
+* Options Summary::             List of command line options
+* Assembler Syntax::            Specific syntax (directives...)
+* Output File::                 Output files specifications
+* Index::                       Index
+@end menu
+
+@center manual for as68 version @value{VERSION} edited on @value{UPDATED}
+
+@end ifinfo
+
+@node History, As68 Program, Top, Top
+@chapter History
+@c !BEGIN HISTORY
+The first version of as68 was written in the early 90's by Vincent
+Penne. It aims to cross assemble programs for Atari ST and Amiga
+platforms. A few demos and even games were created with it. It was
+written with maximum performance (speed) in mind. The sources used to
+compile on DOS with Watcom C. Later it was ported to RiscOS platform
+by Benjamin Gerard with a better portability focus. The reason that it
+is now part of the sc68 project is that it has been heavily used while
+developping sc68 music data base.
+@c !END HISTORY
+
+@node As68 Program, Options Summary, History, Top
+@chapter The @command{as68} Program
+
+@section Description
+@c !BEGIN DESCRIPTION
+@command{as68} is a 68000 macro assembler, very fast, with a syntax
+close to hisoft genst which
+should be close to Motorola specifications.
+@c !END DESCRIPTION
+
+@c !BEGIN SYNOPSIS
+@section Synopsis
+@display
+@command{as68} [OPTION] <input> ...
+@end display
+@c !END SYNOPSIS
+
+@node Options Summary, Assembler Syntax, As68 Program, Top
+@chapter Options Summary
+
+Prefix long options with `--no-' and short options with `+' to reverse
+option behaviour.
+
+@c !BEGIN OPTIONS
+@table @samp
+@item -h
+@itemx --help
+Print help message and exit.
+@item -V
+@itemx --version
+Print version and copyright and exit.
+@item -r
+@itemx --reloc
+Produce relocation table (def:no).
+@item -p
+@itemx --pic-check
+Warning position dependant addressing mode (def:no).
+@item -v
+@itemx --verbose
+Be verbose.
+@item -t
+@itemx --strip-bss
+Strip BSS (def:no).
+@item -b Kb
+@itemx --buffer-size <Kb>
+Code buffer size in KByte.
+@item -s <filename>
+@itemx --reloc-output <filename>
+Set relocation table file (generated with --reloc option). Only possible for single a input file. Default is input filename with a .rel extension.
+@item -o <filename>
+@itemx --output <filename>
+Set output file. Only possible for single a input file. Default is input filename with a .bin extension.
+@end table
+@c !END OPTIONS
+
+@node Assembler Syntax, Output File, Options Summary, Top
+@chapter Assembler syntax
+@c !BEGIN SYNTAX
+as68 syntax is very close to hisoft
+genst. Except for some assembly directives are
+which are followed by a @{ ... @} block. In other words it should be
+close enough to Motorola specifications.
+
+@section Macro syntax
+Sample below should demonstrate macro basic syntax.
+
+@example
+@group
+name MACRO
+@{
+label_\@@:       ;\@@ is replaced by macro unic id).
+  move.l #\1,\2 ;\1 is the 1st macro parameter, \2 the 2nd ...
+@}
+@end group
+@end example
+
+@section Assembler Control Directives
+This section briefly describes as68 assembler directives. This list is probably not exhaustive.
+
+@table @asis
+@item ALIGN
+      [EXPR] Set align to given position
+@item DEFAULT
+      [BYTE|WORD]  Set default opcode size
+@item EVEN
+      Set align to next even position
+@item IF
+      [EXPR] Start a conditionnal block
+@item INCBIN
+      [FILE] Include binary file.
+@item INCLUDE
+      [FILE] Include source file.
+@item LOAD
+      [EXPR] Set load address (cross devel)
+@item LS
+      [FILE] Load symbol
+@item LST
+      [FILE] Load symbol 2!
+@item ORG
+      [EXPR] Set assembly address.
+@item PRINT
+      [EXPR] Output a message
+@item RELOCATION
+      [on|off] Set relocation generation
+@item REPEAT
+      Start a REPEAT ... UNTIL loop
+@item RPT
+      as REPEAT
+@item RSRESET
+      Reset current structure
+@item RSSET
+      Add a field to current structure
+@item RUN
+      [EXPR] Set run address (cross devel)
+@item UNTIL cond
+      End a REPEAT ... UNTIL loop
+@item WHILE
+      [EXPR] Start a while block
+@end table
+
+@c !END SYNTAX
+
+@node Output File, Index, Assembler Syntax, Top
+@chapter Output File
+
+@section Binary Output
+@c !BEGIN OUTPUT
+as68 produces a raw binary file starting from the address specified by
+the ORG directive. This file includes the entire BSS section.
+@c !END OUTPUT
+
+@section Stripping BSS
+@c !BEGIN BSS
+as68 does not handle sectionning. However it assumes that BSS is all
+zeroed data at the end of the binary. Stripping BSS means to remove
+this data even if it were not generated by a ds.x instruction.
+@c !END BSS
+
+@section Relocation table
+@c !BEGIN RELOCATION
+Relocation table is a binary table containing the offset from the
+beginning of the long word (32bit) that need a relocation. Each offset
+is stored as a long word (obviously Motorola 32 bit big endian). The
+table ends by a offset equal to -1 (0xFFFFFFFF).
+
+@example
+@group
+;
+; Sample code to use as68 relocation table.
+;
+; a0: relocation table
+; a1: binary
+reloc:
+        move.l  (a0)+,d0
+        cmp.l   #-1,d0
+        beq.s   .finish
+        add.l   a1,0(a1,d0.l)
+        bra.s   reloc
+.finish:
+        rts        
+@end group
+@end example
+@c !END RELOCATION
+
+@ignore
+@c !BEGIN SEEALSO
+The full documentation for @command{as68} is maintained as a Texinfo manual. If the @command{info} and @command{as68} programs are properly installed at your site, the command
+
+@command{info as68}
+
+should give you access to the complete manual.
+@c !END SEEALSO
+@end ignore
+
+@node Index,  , Output File, Top
+@unnumbered Index
+
+@printindex ky
+
+@page
+@contents
+@bye

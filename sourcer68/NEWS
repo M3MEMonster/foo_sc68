@@ -1,0 +1,16 @@
+			 ** sourcer68 NEWS **
+
+
+20090117	<ben>
+
+	Autotools up-to-date.
+
+
+20070102	<ben>
+
+	Release sourcer68 20070102
+
+	sourcer68 has been removed from sc68 package and it is now
+	distribute within its own independant package. sc68 file
+	support has been removed but will be restored as soon as
+	possible.

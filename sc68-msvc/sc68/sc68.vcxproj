@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5E19938C-78A1-440A-9396-28F85F16F429}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>sc68</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(SolutionDir)_$(PlatformShortName)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)/..;$(ProjectDir)/../../file68;$(ProjectDir)/../../libsc68;$(ProjectDir)/../../libsc68/sc68;$(ProjectDir)/../../sc68-libc</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <CompileAsManaged>false</CompileAsManaged>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <UseUnicodeForAssemblerListing>false</UseUnicodeForAssemblerListing>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>false</ExceptionHandling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <CreateHotpatchableImage>false</CreateHotpatchableImage>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <CompileAs>CompileAsC</CompileAs>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)$(SolutionName)-$(PlatformToolset).pdb</ProgramDataBaseFileName>
+      <ErrorReporting>None</ErrorReporting>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX86</TargetMachine>
+      <Verbose>false</Verbose>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <UseUnicodeResponseFiles>false</UseUnicodeResponseFiles>
+      <ErrorReporting>NoErrorReport</ErrorReporting>
+      <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
+      <SubSystem>Windows</SubSystem>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)/..;$(ProjectDir)/../../file68;$(ProjectDir)/../../libsc68;$(ProjectDir)/../../libsc68/sc68;$(ProjectDir)/../../sc68-libc</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <CreateHotpatchableImage>false</CreateHotpatchableImage>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <CompileAs>CompileAsC</CompileAs>
+      <UseUnicodeForAssemblerListing>false</UseUnicodeForAssemblerListing>
+      <CompileAsManaged>false</CompileAsManaged>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <OmitFramePointers>true</OmitFramePointers>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)$(SolutionName)-$(PlatformToolset).pdb</ProgramDataBaseFileName>
+      <ErrorReporting>None</ErrorReporting>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX86</TargetMachine>
+      <Verbose>false</Verbose>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <UseUnicodeResponseFiles>false</UseUnicodeResponseFiles>
+      <ErrorReporting>NoErrorReport</ErrorReporting>
+      <LinkTimeCodeGeneration>true</LinkTimeCodeGeneration>
+      <SubSystem>Windows</SubSystem>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\libsc68\api68.c" />
+    <ClCompile Include="..\..\libsc68\conf68.c" />
+    <ClCompile Include="..\..\libsc68\dial68\dial68.c" />
+    <ClCompile Include="..\..\libsc68\dial68\dial_conf.c" />
+    <ClCompile Include="..\..\libsc68\dial68\dial_finf.c" />
+    <ClCompile Include="..\..\libsc68\dial68\dial_tsel.c" />
+    <ClCompile Include="..\..\libsc68\dial68\winui\winui_dlg.c" />
+    <ClCompile Include="..\..\libsc68\dial68\winui\winui_rsc.c" />
+    <ClCompile Include="..\..\libsc68\emu68\emu68.c" />
+    <ClCompile Include="..\..\libsc68\emu68\error68.c" />
+    <ClCompile Include="..\..\libsc68\emu68\getea68.c" />
+    <ClCompile Include="..\..\libsc68\emu68\inst68.c" />
+    <ClCompile Include="..\..\libsc68\emu68\ioplug68.c" />
+    <ClCompile Include="..\..\libsc68\emu68\lines68.c" />
+    <ClCompile Include="..\..\libsc68\emu68\mem68.c" />
+    <ClCompile Include="..\..\libsc68\io68\io68.c" />
+    <ClCompile Include="..\..\libsc68\io68\mfpemul.c" />
+    <ClCompile Include="..\..\libsc68\io68\mfp_io.c" />
+    <ClCompile Include="..\..\libsc68\io68\mwemul.c" />
+    <ClCompile Include="..\..\libsc68\io68\mw_io.c" />
+    <ClCompile Include="..\..\libsc68\io68\paulaemul.c" />
+    <ClCompile Include="..\..\libsc68\io68\paula_io.c" />
+    <ClCompile Include="..\..\libsc68\io68\shifter_io.c" />
+    <ClCompile Include="..\..\libsc68\io68\ymemul.c" />
+    <ClCompile Include="..\..\libsc68\io68\ym_blep.c" />
+    <ClCompile Include="..\..\libsc68\io68\ym_dump.c" />
+    <ClCompile Include="..\..\libsc68\io68\ym_envel.c" />
+    <ClCompile Include="..\..\libsc68\io68\ym_io.c" />
+    <ClCompile Include="..\..\libsc68\io68\ym_puls.c" />
+    <ClCompile Include="..\..\libsc68\libsc68.c" />
+    <ClCompile Include="..\..\libsc68\mixer68.c" />
+    <ClCompile Include="..\..\sc68-libc\basename.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libsc68\dial68\dial68.h" />
+    <ClInclude Include="..\..\libsc68\dial68\winui\resource.h" />
+    <ClInclude Include="..\..\libsc68\emu68\assert68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\cc68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\emu68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\emu68_api.h" />
+    <ClInclude Include="..\..\libsc68\emu68\error68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\excep68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_arithmetic.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_bcd.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_bitmanip.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_datamove.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_exception.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_logic.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_progctrl.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_shifting.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inl68_systctrl.h" />
+    <ClInclude Include="..\..\libsc68\emu68\inst68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\ioplug68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\lines68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\macro68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\mem68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\srdef68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\struct68.h" />
+    <ClInclude Include="..\..\libsc68\emu68\type68.h" />
+    <ClInclude Include="..\..\libsc68\io68\default.h" />
+    <ClInclude Include="..\..\libsc68\io68\io68.h" />
+    <ClInclude Include="..\..\libsc68\io68\io68_api.h" />
+    <ClInclude Include="..\..\libsc68\io68\mfpemul.h" />
+    <ClInclude Include="..\..\libsc68\io68\mfp_io.h" />
+    <ClInclude Include="..\..\libsc68\io68\mwemul.h" />
+    <ClInclude Include="..\..\libsc68\io68\mw_io.h" />
+    <ClInclude Include="..\..\libsc68\io68\paulaemul.h" />
+    <ClInclude Include="..\..\libsc68\io68\paula_io.h" />
+    <ClInclude Include="..\..\libsc68\io68\shifter_io.h" />
+    <ClInclude Include="..\..\libsc68\io68\ymemul.h" />
+    <ClInclude Include="..\..\libsc68\io68\ymout1c5bit.h" />
+    <ClInclude Include="..\..\libsc68\io68\ymout2k9.h" />
+    <ClInclude Include="..\..\libsc68\io68\ymoutorg.h" />
+    <ClInclude Include="..\..\libsc68\io68\ym_blep.h" />
+    <ClInclude Include="..\..\libsc68\io68\ym_dump.h" />
+    <ClInclude Include="..\..\libsc68\io68\ym_fixed_vol.h" />
+    <ClInclude Include="..\..\libsc68\io68\ym_io.h" />
+    <ClInclude Include="..\..\libsc68\io68\ym_puls.h" />
+    <ClInclude Include="..\..\libsc68\sc68\conf68.h" />
+    <ClInclude Include="..\..\libsc68\sc68\mixer68.h" />
+    <ClInclude Include="..\..\libsc68\sc68\sc68.h" />
+    <ClInclude Include="..\..\libsc68\sc68\trap68.h" />
+    <ClInclude Include="..\..\sc68-libc\libc68.h" />
+    <ClInclude Include="config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\libsc68\dial68\README" />
+    <None Include="..\..\libsc68\dial68\winui\README" />
+    <None Include="..\README.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,32 @@
+
+		     as68 - 68000 Macro Assembler
+
+		   Copyright (C) 1993 Vincent PENNE
+	       Copyright (C) 1999-2009 Benjamin GERARD
+
+* Updates *
+
+ - Posix compatible version
+ - Some debug ( fast table, signed char, ds, dcb )
+ - Adding command line control
+ - Adding position independant check
+ - Error messages tranlation & update
+ - Added few comments
+
+* Bugs *
+
+ - In relocation progress,  some relocation are not found !
+ - -P forces -R. org directive is disabled !!
+ - pea relatif PC, bugs with -P or -R
+ - symbol created by  xx = v are always lower case !
+
+* Disclaimer *
+
+   This source code is quiet ugly ... Sorry...
+
+   But, it was old code. Vincent made it for his personnal use for
+   Atari ST and Amiga demos and games programming. Featuring a was
+   very fast assembler linked by a printer port connection (4bit : PC
+   rules), with special upload and exec directives. Notice that "Quick
+   the thunder rabbit" released by Titus for Amiga 500/1200 and Amiga
+   CD-32, was entirely made with it.

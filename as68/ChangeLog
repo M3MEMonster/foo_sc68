@@ -1,0 +1,28 @@
+2006-12-26  benjihan
+
+	* as68.h: Auto configure package name and version defines if missing.
+
+2006-12-25  benjihan
+
+	* AUTHORS, README, as68.c, as68.ebuild.in, as68.h, configure.ac,
+	error.c, error.h, expression.c, opcode.c, word.c: RC1 for build
+	20061217.
+
+2006-12-20  benjihan
+
+	* cvs-prereq.sh: Helping script for cvs users.
+
+	* as68.h, error.c, error.h, expression.c, opcode.c, word.c:
+	Initial import.
+
+
+	* as68.h, error.c, error.h, expression.c, opcode.c, word.c: New file.
+
+	* AUTHORS, ChangeLog, Makefile.am, NEWS, README, as68.c,
+	as68.ebuild.in, as68.spec.in, as68.vcproj, as68_doc.h,
+	configure.ac: Initial import.
+
+
+	* AUTHORS, ChangeLog, Makefile.am, NEWS, README, as68.c,
+	as68.ebuild.in, as68.spec.in, as68.vcproj, as68_doc.h,
+	configure.ac: New file.

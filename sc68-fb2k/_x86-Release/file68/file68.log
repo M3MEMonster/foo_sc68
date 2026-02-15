@@ -1,0 +1,62 @@
+﻿Build started 2026/2/15 21:12:02.
+     1>Project "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-msvc\file68\file68.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\file68.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\file68.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-msvc\file68\\" /I"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-msvc\file68\/.." /I"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-msvc\file68\/../zlib" /I"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-msvc\file68\/../../file68/sc68" /I"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-msvc\file68\/../../unice68" /Zi /nologo /W3 /WX- /MP /Ox /Ob2 /Oi /Ot /Oy /GL /D HAVE_CONFIG_H /D WIN32 /D NDEBUG /D _LIB /D _MBCS /GF /Gm- /MT /GS- /Gy- /fp:fast /fp:except- /Zc:wchar_t /Zc:forScope /GR- /openmp- /Fo"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\\" /Fd"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\sc68-fb2k-v100.pdb" /Gd /TC /analyze- /errorReport:none ..\..\file68\src\endian68.c ..\..\file68\src\error68.c ..\..\file68\src\file68.c ..\..\file68\src\gzip68.c ..\..\file68\src\ice68.c ..\..\file68\src\init68.c ..\..\file68\src\msg68.c ..\..\file68\src\option68.c ..\..\file68\src\registry68.c ..\..\file68\src\replay68.c ..\..\file68\src\rsc68.c ..\..\file68\src\string68.c ..\..\file68\src\timedb68.c ..\..\file68\src\uri68.c ..\..\file68\src\vfs68.c ..\..\file68\src\vfs68_ao.c ..\..\file68\src\vfs68_curl.c ..\..\file68\src\vfs68_fd.c ..\..\file68\src\vfs68_file.c ..\..\file68\src\vfs68_mem.c ..\..\file68\src\vfs68_null.c ..\..\file68\src\vfs68_z.c
+         endian68.c
+         error68.c
+         file68.c
+         gzip68.c
+         ice68.c
+         init68.c
+         msg68.c
+         option68.c
+         registry68.c
+         replay68.c
+         rsc68.c
+         string68.c
+         timedb68.c
+         uri68.c
+         vfs68.c
+         vfs68_ao.c
+         vfs68_curl.c
+         vfs68_fd.c
+         vfs68_file.c
+         vfs68_mem.c
+         vfs68_null.c
+         vfs68_z.c
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68.lib" /NOLOGO /NODEFAULTLIB /MACHINE:X86 /SUBSYSTEM:WINDOWS /LTCG "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\endian68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\error68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\file68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\gzip68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\ice68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\init68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\msg68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\option68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\registry68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\replay68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\rsc68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\string68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\timedb68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\uri68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68_ao.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68_curl.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68_fd.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68_file.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68_mem.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68_null.obj"
+         "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\vfs68_z.obj"
+         file68.vcxproj -> D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68.lib
+       FinalizeBuildStatus:
+         Deleting file "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\file68.unsuccessfulbuild".
+         Touching "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-fb2k\_x86-Release\file68\file68.lastbuildstate".
+     1>Done Building Project "D:\wykPrivacy\C_or_C++Project\sc68_exploration\test\sc68-code-r599\sc68-msvc\file68\file68.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.44

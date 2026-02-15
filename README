@@ -1,0 +1,55 @@
+		      **sc68-ng - meta package**
+
+sc68 packages
+=============
+
+  Required packages
+  -----------------
+
+  o libsc68 (sc68 lib API)
+  o libfile68 (sc68 file lib)
+
+  Recommended packages
+  --------------------
+
+  o unice68 (ice! depacker lib and cli)
+  o sc68 (command line player)
+  o info68 (sc68 file info cli)
+
+  Developper tools
+  ----------------
+   
+  o desa68 (68k disassembler lib)
+  o sourcer68 (68k sourcer cli)
+  o debug68 (sc68 file toolkit cli)
+  o as68 (68k macro assembler)
+
+
+sc68 package dependencies
+=========================
+
+  o sc68 (command line player)
+    o libsc68 (sc68 lib API)
+      o libfile68 (sc68 file lib)
+        o libunice68 (ice! depacker lib)
+        o (curl)
+        o (zlib)
+        o (libao)
+
+  o unice68 (ice! depacker cli)
+    o libunice68 (ice! depacker lib)
+
+  o info68 (sc68 file info cli)
+    o libfile68 
+      o libunice68
+
+  o sourcer68 (68k sourcer cli)
+    o desa68 (68k disassembler)
+    o libfile68
+      o libunice68
+
+  o debug68 (sc68 toolbox cli)
+    o desa68 
+    o libsc68
+
+  o as68 (68k macro assembler)

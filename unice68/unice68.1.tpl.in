@@ -1,0 +1,21 @@
+.\" @configure_input@
+.\"
+.\" Man page for @PACKAGE@ 
+.\"
+.\" $Id: unice68.1.tpl.in 5 2009-01-18 23:16:38Z benjihan $
+.\"
+.TH @PACKAGE_NAME@ "1" @PACKAGE_VERSION@ "sc68-tools" "User Commands"
+.LO 1
+.SH NAME
+@PACKAGE_NAME@ \- @NAME@
+@SYNOPSIS@
+.SH "DESCRIPTION"
+@DESCRIPTION@
+@OPTIONS@
+@INPUT@
+.SH AUTHORS
+@AUTHORS@
+.SH COPYING
+@COPYING@
+.SH "SEE ALSO"
+@SEEALSO@

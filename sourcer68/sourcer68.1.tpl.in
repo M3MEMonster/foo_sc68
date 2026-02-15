@@ -1,0 +1,24 @@
+.\" @configure_input@
+.\"
+.\" Man page for @PACKAGE@ 
+.\"
+.\" $Id: sourcer68.1.tpl.in 8 2009-01-19 17:11:44Z benjihan $
+.\"
+.TH @PACKAGE_NAME@ "1" @PACKAGE_VERSION@ "sc68-tools" "User Commands"
+.LO 1
+.SH NAME
+@PACKAGE_NAME@ \- @NAME@
+@SYNOPSIS@
+.SH "DESCRIPTION"
+This man page was generated from the file \fI@PACKAGE@.texi\fR.
+
+@DESCRIPTION@
+@OPTIONS@
+@ENTRYLIST@
+@INPUT@
+.SH AUTHORS
+@AUTHORS@
+.SH COPYING
+@COPYING@
+.SH "SEE ALSO"
+@SEEALSO@

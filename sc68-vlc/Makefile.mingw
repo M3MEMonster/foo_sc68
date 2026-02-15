@@ -1,0 +1,187 @@
+# -*- makefile -*-
+#
+# This is a temporary Makefile to build sc68 vlc plugin on win32 platform
+#
+
+# ----------------------------------------------------------------------
+# CONFIG
+# ----------------------------------------------------------------------
+
+CONFIG	:= .config		# where last buid config is saved
+
+# Read the previous config
+GET_CFG	:= $(shell cat $(CONFIG) 2>/dev/null || echo 32)
+
+# Config M
+ifndef M
+M	:= $(word 1,$(GET_CFG))
+endif
+ifeq ($(M),64)
+HOST	:= x86_64-w64-mingw32
+else ifeq ($(M),32)
+HOST	:= i686-w64-mingw32
+else
+$(error M must be either '32' (win32) or '64' (win64))
+endif
+
+# Config R
+ifndef R
+R	:= $(word 2,$(GET_CFG))
+endif
+ifeq ($(R),0)
+SUFFIX	:= -debug
+EFLAGS	:= -UNDEBUG -DDEBUG
+else ifeq ($(R),1)
+SUFFIX	:= -release
+EFLAGS	:= -DNDEBUG -UDEBUG
+else
+$(error R must be either '0' (debug) or '1' (release))
+endif
+
+WRITE	:= $(shell echo $(M) $(R) >$(CONFIG) 2>/dev/null || rm -- $(CONFIG))
+
+ARCHBASE ?= $(realpath $(HOME)/_Arch)
+DEVEL    ?= $(realpath $(HOME)/_Code)
+
+CC	 := $(HOST)-gcc
+STRIP	 := $(HOST)-strip
+SYSROOT  := /usr/$(HOST)/sys-root
+PREFIX   := $(ARCHBASE)/$(HOST)/sc68-vlc$(SUFFIX)
+libexec  := $(PREFIX)/libexec
+
+# Setup the local VLC sdk (installed by VLC)
+VLCSDK	:= $(realpath ./sdk$(M))
+VLCDIR	:= $(realpath ./sdk$(M)/..)
+VLCLIB	:= $(VLCSDK)/lib
+VLCINC	:= $(VLCSDK)/include
+VLCPLG	:= $(VLCDIR)/plugins/demux
+
+VLCSED  := | sed -e 's:\(-[IL]\)\?/home/.*\(/lib\|/include\)\?\([^ ]*\):\1"$(VLCSDK)\2\3":g'
+#VLCSED  := | cat
+VLCSED  := |sed -e 's:-\([IL]\)/home/\([^ ]\)*\(/lib\|/include\):-\1"$(VLCSDK)"\3:g'
+# Configure pkgconfig for cross-compiling
+PKGCONFIG  = PKG_CONFIG_LIBDIR='$(SYSROOT)/mingw/lib/pkgconfig'
+PKGCONFIG += PKG_CONFIG_PATH='$(PREFIX)/lib/pkgconfig:$(VLCSDK)/lib/pkgconfig'
+PKGCONFIG += pkg-config 
+
+# Extra path
+#XLIB = -L/cygdrive/c/MinGW/lib
+
+# ----------------------------------------------------------------------
+# PKG-CONFIG
+# ----------------------------------------------------------------------
+
+VLC_VER	:= $(shell $(PKGCONFIG) --modversion vlc-plugin || echo error)
+ifeq ($(VLC_VER),error)
+$(error unable to locate vlc-plugin with pkg-config)
+endif
+
+SC68_VER:= $(shell $(PKGCONFIG) --modversion sc68       || echo error)
+ifeq ($(SC68_VER),error)
+$(error unable to locate sc68 with pkg-config)
+endif
+
+SC68_CFLAGS := $(shell $(PKGCONFIG) --static --cflags sc68)
+SC68_LIBS   := $(shell $(PKGCONFIG) --static --libs sc68)
+
+VLC_CFLAGS := $(shell $(PKGCONFIG) --static --cflags vlc-plugin $(VLCSED))
+VLC_LIBS   := $(shell $(PKGCONFIG) --static --libs-only-L vlc-plugin $(VLCSED))
+VLC_LIBS   += -lvlccore
+
+CFLAGS    = -std=gnu99 -O2 
+CPPFLAGS  = $(VLC_CFLAGS) $(SC68_CFLAGS) $(EFLAGS)
+CPPFLAGS += $(VLC_STREAM) -DMODULE_STRING=\"sc68\" 
+LDFLAGS   = $(VLC_LIBS) -static $(SC68_LIBS) $(XLIB) -shared
+
+# ----------------------------------------------------------------------
+# SOURCES, INTERMEDIATS AND TARGET
+# ----------------------------------------------------------------------
+src     := sc68-vlc-demux.c sc68-vlc-vfs.c
+obj     := $(src:%.c=%.o)
+sos     := libsc68_plugin.dll
+# ----------------------------------------------------------------------
+
+all: $(sos)
+
+test-patch:
+
+
+.PHONY: patch 
+
+
+libsc68_plugin.dll: $(obj)
+	$(CC) -shared -o $@ $(CPPFLAGS) $(CFLAGS) -static-libgcc $^ $(VLC_LIBS) \
+-Wl,-dn $(SC68_LIBS) 
+
+.c.o:
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+install-plugin: $(sos)
+	install --strip-program=$(STRIP) -s -D $^ "$(libexec)"/$^
+
+install-vlc: $(sos)
+	install --strip-program=$(STRIP) -s -D $^ "$(VLCPLG)"/$^
+
+
+install: install-plugin install-vlc
+
+
+uninstall-plugin:
+	rm -f "$(libexec)"/libsc68_*
+
+uninstall-vlc:
+	rm -f "$(VLCPLG)"/libsc68_*
+
+uninstall: uninstall-plugin uninstall-vlc
+
+clean:
+	rm -f *.o *.so *.dll *.la *.a *.lo .libs/*
+
+distrib: $(sos)
+	zip sc68-vlc-$(VLC_VER)-win32-$(SC68_VER).zip $^
+
+info:
+	@echo '******************************'
+	@echo 'INFO $(M):'
+	@echo '******************************'
+	@echo 'PREFIX="$(PREFIX)"'
+	@echo 'HOME="$(HOME)"'
+	@echo 'ARCHBASE="$(ARCHBASE)"'
+	@echo '=============================='
+	@echo 'sc68 $(SC68_VER)'
+	@echo '------------------------------'
+	@echo 'CFLAGS="$(SC68_CFLAGS)"'
+	@echo 'LIBS="$(SC68_LIBS)"'
+	@echo '=============================='
+	@echo 'VLC $(VLC_VER)'
+	@echo '------------------------------'
+	@echo 'VLCSDK="$(VLCSDK)"'
+	@echo 'VLCDIR="$(VLCDIR)"'
+	@echo 'VLCLIB="$(VLCLIB)"'
+	@echo 'VLCINC="$(VLCINC)"'
+	@echo 'VLCPLG="$(VLCPLG)"'
+	@echo '------------------------------'
+	@echo 'CFLAGS="$(VLC_CFLAGS)"'
+	@echo 'LIBS="$(VLC_LIBS)"'
+
+# @echo "PKGCONFIG=[$(PKGCONFIG)"
+# @$(PKGCONFIG) --libs sc68 vlc-plugin $(VLCFIXSDK)
+# @$(PKGCONFIG) --cflags sc68 vlc-plugin $(VLCFIXSDK)
+# @$(PKGCONFIG) --modversion sc68 vlc-plugin
+# @echo
+# @echo "VLC_DIR=[$(VLCDIR)]"
+# @echo "VLC_CFLAGS=[$(VLC_CFLAGS)]"
+# @echo "VLC_LIBS=[$(VLC_LIBS)]"
+# @echo "VLC_VER=[$(VLC_VER)]"
+# @echo "VLC_STREAM=[$(VLC_STREAM)]"
+# @echo
+# @echo
+# @echo "SC68_CFLAGS=[$(SC68_CFLAGS)]"
+# @echo "SC68_LIBS=[$(SC68_LIBS)]"
+# @echo "SC68_VER=[$(SC68_VER)]"
+# @echo
+
+
+.PHONY: all clean info
+.PHONY: install install-plugin install-vlc
+.PHONY: uninstall uninstall-plugin uninstall-vlc

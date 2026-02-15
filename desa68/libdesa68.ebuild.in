@@ -1,0 +1,28 @@
+# Gentoo ebuild for @PACKAGE_NAME@ (@PACKAGE_VERSION@)
+#
+# Copyright (C) 2006 Benjamin Gerard
+#
+# Distributed under the terms of the GNU General Public License v2
+#
+# $Id: libdesa68.ebuild.in 178 2011-09-06 23:08:47Z benjihan $
+#
+
+# @configure_input@
+
+DESCRIPTION="@PACKAGE_DESC@"
+HOMEPAGE="@PACKAGE_URL@/"
+SRC_URI="mirror://sourceforge/sc68/${P}.tar.bz2"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~x86"
+IUSE=""
+S=${WORKDIR}/${P}
+
+src_compile() {
+	econf || die
+	emake || die
+}
+
+src_install() {
+    make DESTDIR=${D} install || die
+}

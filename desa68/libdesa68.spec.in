@@ -1,0 +1,43 @@
+Name:		@PACKAGE_NAME@
+Group:		TODO
+Version:	@VERSION@
+Release:	1
+Copyright:	GPL-3
+Summary:	@PACKAGE_SHORTDESC@
+URL:		@PACKAGE_URL@/
+Source:		%{name}-%{version}.tar.gz
+Buildroot:	%{_tmppath}/%{name}-root
+
+%description
+@PACKAGE_DESC@
+
+%prep
+rm -rf $RPM_BUILD_ROOT
+
+%setup -q
+
+%build
+export CFLAGS=$RPM_OPT_FLAGS
+
+./configure \
+	--prefix=%{_prefix} \
+	--mandir=%{_mandir} \
+	--infodir=%{_infodir}
+make
+
+%install
+make install-strip DESTDIR=$RPM_BUILD_ROOT
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr (-,root,root)
+%doc AUTHORS ChangeLog COPYING NEWS README
+%{_bindir}/*
+%{_mandir}/man1/*
+%{_infodir}/*
+
+%changelog
+* Wed Dec 27 20:31:09 UTC 2006 Benjamin Gerard <ben@sashipa.com>
+- initial RPM

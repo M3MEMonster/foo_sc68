@@ -1,0 +1,433 @@
+\input texinfo @c -*-texinfo-*-
+
+@c %**start of header
+@include version.texi
+@include package.texi
+@setfilename mksc68.info
+@settitle @command{@value{PACKAGE}}: @value{DESCRIPTION}
+@finalout @c overfull hbox fix ?
+@c %**end of header
+
+@dircategory sc68 project
+@direntry
+* @value{PACKAGE}: (sc68).             @value{DESCRIPTION}.
+@end direntry
+
+@synindex cp ky
+@setchapternewpage odd
+
+@ifinfo
+This is Edition @value{EDITION} of @cite{The @command{@value{PACKAGE}}
+Manual}, for @command{@value{PACKAGE}} version @value{VERSION}, last
+updated @value{UPDATED}.
+
+@*Copyright @copyright{} 1998-2014 Benjamin Gerard
+
+Permission is granted to make and distribute verbatim copies of
+this manual upon condition that the  provided the copyright notice
+and this permission notice are preserved on all copies.
+@end ifinfo
+
+@titlepage
+@title @value{PACKAGE}
+@sp 1
+@subtitle Edition @value{EDITION}, for @command{@value{PACKAGE}} version @value{VERSION} @value{UPDATED}
+@author Benjamin Gerard
+@end titlepage
+
+@ifinfo
+@node Top, Description, (dir), (dir)
+@top @command{mksc68}: @value{DESCRIPTION}
+
+This manual documents how to use version @value{VERSION} of
+@command{mksc68}, an interactive console program also supporting
+scrips to manipulate sc68 music files.
+
+@c The interractive mode supports
+@c @inforef{Top,GNU/readline,readline} if it is available. The
+@c @command{mksc68} command can also run script though standard input.
+
+
+@center manual for @value{PACKAGE} version @value{VERSION} edited on @value{UPDATED}
+
+@end ifinfo
+
+@c **********************************************************************
+@c * DESCRIPTION
+@c **********************************************************************
+
+@menu
+* Description::
+* Invoking info68::
+* mksc68 interpreter::
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Synopsis
+
+* Options::
+
+mksc68 interpreter
+
+* mksc68 interpreter command line::
+* mksc68 interpreter commands::
+
+mksc68 interpreter commands
+
+* help command::                Print command(s) usage.
+* exit command::                exit command interpreter.
+* tag command::                 meta-tag manipulation.
+* info command::                display album info.
+* extract command::             extract track raw data.
+* save command::                save disk.
+* load command::                load a new disk.
+* new command::                 create a new disk.
+* gdb command::                 get/set gdb server parameters.
+* play command::                play a track.
+* stop command::                stop a background play.
+* time command::                Autodetect track duration.
+* echo command::                print informative message.
+* error command::               print error message.
+* message command::             change message output level.
+
+@end detailmenu
+@end menu
+
+@node Description
+@unnumbered Description
+
+@command{mksc68} is a console program to create, to edit, to play ot
+to debug sc68 files.
+
+@node Invoking info68, Examples, Description, Top
+@unnumbered Invoking info68
+
+@unnumberedsec Synopsis
+@display
+@command{mksc68 [Options] [--] [<URI>]}
+@command{mksc68 --help}
+@command{mksc68 --version}
+@end display
+
+Runs the mksc68 command line interpreter. If an @dfn{<URI>} is given
+the interpreter will automatically run the @ref{load command} on
+it. Following @dfn{URI} are merged using the @option{-a} switch of teh
+the @ref{load command}.
+
+@c **********************************************************************
+@c * OPTIONS
+@c **********************************************************************
+
+@menu
+* Options::
+@end menu
+
+@node Options
+@unnumberedsec Options
+
+@multitable @columnfractions 0.1 0.3 0.6
+@item
+@tab  @option{--}
+@tab  Break option parsing
+@item @option{-h}
+@tab  @option{--help}
+@tab  display help message and exit
+@item @option{-V}
+@tab  @option{--version}
+@tab  display build date and exit
+@item @option{-v}
+@tab  @option{--verbose}
+@tab  increase verbosity level
+@item @option{-q}
+@tab  @option{--quiet}
+@tab  decrease verbosity level
+@item @option{-x}
+@tab  @option{--fail-exit}
+@tab  exit directly if a command fails
+@item @option{-n}
+@tab  @option{--no-readline}
+@tab  ignore @inforef{Top,GNU/readline,readline} in interactive mode
+@item @option{-i}
+@tab  @option{--interactive}
+@tab  force interactive mode
+@end multitable
+
+@inforef{sc68,sc68 generic options,sc68}
+
+@c **********************************************************************
+@c * MKSC68 COMMAND INTERPRETER
+@c **********************************************************************
+
+@node mksc68 interpreter
+@unnumbered mksc68 interpreter
+
+@menu
+* mksc68 interpreter command line::
+* mksc68 interpreter commands::
+@end menu
+
+@node mksc68 interpreter command line
+@unnumberedsec mksc68 interpreter command line
+
+$$$ TODO explain how the interpreter command line works (readline, script, conditionnals, exit-on-fail ...)
+
+@node mksc68 interpreter commands
+@unnumberedsec mksc68 interpreter commands
+
+@menu
+* help command::                Print command(s) usage.
+* exit command::                exit command interpreter.
+* tag command::                 meta-tag manipulation.
+* info command::                display album info.
+* extract command::             extract track raw data.
+* save command::                save disk.
+* load command::                load a new disk.
+* new command::                 create a new disk.
+* gdb command::                 get/set gdb server parameters.
+* play command::                play a track.
+* stop command::                stop a background play.
+* time command::                Autodetect track duration.
+* echo command::                print informative message.
+* error command::               print error message.
+* message command::             change message output level.
+@end menu
+
+@node help command, tag command, mksc68 Commands, mksc68 Commands
+@unnumberedsubsec help command
+
+Usage: help [cmd ...]
+
+   The `help' command prints command list or usage.
+   Without argument it prints the command list with a short description.
+   Else prints a complete usage for all given commands.
+   Returns the number of error (unknown commands).
+
+@node exit command, info command, help command, mksc68 Commands
+@unnumberedsubsec exit command
+
+Usage: exit [exit-code]
+
+   exit command interpreter
+
+@node tag command, extract command, exit command, mksc68 Commands
+@unnumberedsubsec tag command
+
+Usage: tag [opts] [tag [val] ...]
+
+   The `tag' command manipulates meta-tags. Tags are associated
+   either to the whole disk or to specific tracks.
+   It is allowed to address both by using a `-d' and `-t' switches.
+
+   OPTIONS
+   @multitable @columnfractions 0.1 0.2 0.7
+   @item  @option{-l}
+   @tab   @option{--list}
+   @tab   display a list of well-known tags and exit
+   @item  @option{-d}
+   @tab   @option{--disk}
+   @tab   select disk tag
+   @item  @option{-t}
+   @tab   @option{--tracks=TRACKS}
+   @tab   select tracks tag
+   @item  @option{-v}
+   @tab   @option{--view}
+   @tab   view specified tags
+   @item  @option{-D}
+   @tab   @option{--del}
+   @tab   delete specified tags
+   @item  @option{-P}
+   @tab   @option{--purge}
+   @tab   delete all tags (disk and tracks)
+   @end multitable
+
+   TRACKS := N[-N][,N[-N]]* N:=[0-9]+ (0 is the last track)
+
+@node info command, save command, tag command, mksc68 Commands
+@unnumberedsubsec info command
+
+Usage: info [opts]
+
+   The `info' command displays album informations.
+   Use -d, -a and -t to select what to display.
+   Use -l to select how to display how to display it.
+
+   OPTIONS
+      -l --long        use verbose info format.
+      -d --disk        display disk info.
+      -a --all         display full info.
+      -t
+      --tracks=TRACKS  select tracks tag.
+
+   TRACKS := N[-N][,N[-N]]* N:=[0-9]+ (0 is the last track)
+
+@node extract command, load command, info command, mksc68 Commands
+@unnumberedsubsec extract command
+
+Usage: extract <URI> [TRACKS]
+
+   The `extract' command extracts track data.
+
+   OPTIONS
+      -s --single  only save identical data once.
+      -b --binary  output binary (.mus) files (default).
+      -a --asm     output 68k assembler (.s) compatible data.
+      -A --ascii   output 68k assembler (.s) with ASCII.
+
+@node save command, new command, extract command, mksc68 Commands
+@unnumberedsubsec save command
+
+Usage: extract <URI> [TRACKS]
+
+   The `extract' command extracts track data.
+
+   OPTIONS
+      -s --single  only save identical data once.
+      -b --binary  output binary (.mus) files (default).
+      -a --asm     output 68k assembler (.s) compatible data.
+      -A --ascii   output 68k assembler (.s) with ASCII.
+
+mksc68>help save
+Usage: save [opts] [<url>]
+
+   The `save' command saves the disk.
+
+   OPTION
+      -z --gzip=#  Set compression level [0..9].
+
+@node load command, gdb command, save command, mksc68 Commands
+@unnumberedsubsec load command
+
+Usage: load [opts] <url>
+
+   The `load' command loads or merges a disk.
+
+   OPTIONS
+      -f --force   force a new disk creation.
+      -a --add     merge current and loaded disks.
+
+
+@node new command, play command, load command, mksc68 Commands
+@unnumberedsubsec new command
+
+Usage: new [opts] [name]
+
+   The `new' creates a brand new disk.
+
+   OPTIONS
+      -f --force   force a new disk creation.
+
+@node gdb command, stop command, new command, mksc68 Commands
+@unnumberedsubsec gdb command
+
+Usage: new [opts] [name]
+
+   The `new' creates a brand new disk.
+
+   OPTIONS
+      -f --force   force a new disk creation.
+
+mksc68>help gdb
+Usage: gdb [opts] [host[:port]]
+
+   The `gdb' command setup gdb server ipv4/tcp bind address.
+
+@node play command, time command, gdb command, mksc68 Commands
+@unnumberedsubsec play command
+
+Usage: play [opts] [track]
+
+   The `play' command plays a track.
+
+   OPTIONS
+      -l --loop=N       Number of loop (or inf or def)
+      -s --seek=POS     Seek to this position.
+      -t --to=POS       End position.
+      -f --fg           Foreground play.
+      -m --m=N          68k memory size of 2^N.
+      -d --debug        Debug via gdb.
+
+   POS := [+|-]ms | [+|-]mm:ss[,ms]
+     '+' is relative to start position.
+     '-' is relative to end position.
+     no prefix is absolute time posiiton.
+     The value can be express by either a single integer in milliseconds
+     or by a mm:ss,ms form where the ",ms" part is optionnal.
+
+
+
+@node stop command, echo command, play command, mksc68 Commands
+@unnumberedsubsec stop command
+
+Usage: stop
+
+   The `stop' command stops a background music started by the `play' command.
+
+@node time command, error command, stop command, mksc68 Commands
+@unnumberedsubsec time command
+
+Usage: time [opts] [TRACKS ...]
+
+   The `time' command run sc68 music emulator in a special way that allows
+   to autodetect tracks duration.
+
+   TRACKS
+      List of tracks (eg: 1,2-5,7), or all
+
+   OPTIONS
+
+   @multitable @columnfractions 0.1 0.2 0.7
+   @item -s
+   @tab  --silent=MS
+   @tab  Duration for silent detection (0:disable).
+   @item -M
+   @tab  --max-time=MS
+   @tab  Maximum time.
+   @item -p
+   @tab  --pass-time=MS
+   @tab  Search pass duration.
+   @end multitable
+
+@node echo command, message command, time command, mksc68 Commands
+@unnumberedsubsec echo command
+
+Usage: echo [...]
+
+   print informative message
+
+
+
+@node error command,  , echo command, mksc68 Commands
+@unnumberedsubsec error command
+
+Usage: error [...]
+
+   print error message
+
+@node message command,  , error command, mksc68 Commands
+@unnumberedsubsec message command
+
+Usage: message [cats ...]
+
+   The `message' command control message verbosity.
+   Multiple expressions are evaluated sequencially in given order.
+   If no argument is given the command display the list of existing
+   debug categories and their current status.
+
+   CATS := a `,' (comma) separated list of categories (CAT) optionally
+            prefixed by an operator (OP).
+   CAT  := a category-name OR a number OR a bit-number (prefixed by `#')
+   OP   := `=' (equal) | `+' (plus) | `~' (tilde) | `-' (minus) | `,' (coma)
+    `=' set the specified categories (SET)
+    `+' enable the specified categories (OR) (default)
+    `~' disable the specified categories (NAND)
+    `-' as `~' (might confuse the options parser)
+    `,' set ONLY the specified categories and clear others (SET)
+
+
+@page
+@contents
+@c @node Index
+@c @unnumbered Index
+@c @printindex cp
+@bye

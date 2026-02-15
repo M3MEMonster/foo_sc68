@@ -1,0 +1,33 @@
+.\" @configure_input@
+.\"
+.\" Man page for as68 
+.\"
+.TH AS68 1 @PACKAGE_VERSION@
+.LO 1
+.SH "NAME"
+@PACKAGE@ \- @NAME@
+@SYNOPSIS@
+.SH "DESCRIPTION"
+This man page was generated from the file \fIas68.texi\fR.
+
+@INTRO@
+
+@DESCRIPTION@
+.SH "OPTIONS"
+@OPTIONS@
+.SH ASSEMBLER SYNTAX
+@SYNTAX@
+.SH OUTPUT
+@OUTPUT@
+.SH BSS
+@BSS@
+.SH RELOCATION
+@RELOCATION@
+.SH "AUTHORS"
+@AUTHORS@
+.SH "HISTORY"
+@HISTORY@
+.SH "COPYING"
+@COPYING@
+.SH SEE ALSO
+@SEEALSO@

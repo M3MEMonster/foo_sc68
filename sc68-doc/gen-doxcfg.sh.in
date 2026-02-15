@@ -1,0 +1,36 @@
+# -*- sh -*-
+#
+# @file    gen-doxcfg.sh
+# @author  Benjamin Gerard
+# @brief   Generate sc68 doxygen configuration file.
+
+doxygen=@doxygen@
+srcdir="@srcdir@"
+spc='[[:space:]]*'
+
+if test -z "$1"; then
+    echo "missing argument" 1>&2
+    exit 2
+fi
+
+"$doxygen" -s -g "$1" >/dev/null &&
+sed -i -f - "$1"  <<EOF
+s|\(^PROJECT_NAME${spc}=\)${spc}.*$|\1 "sc68"|
+s|\(^PROJECT_NUMBER${spc}=\)${spc}.*$|\1 "@PACKAGE_VERSION@"|
+s|\(^PROJECT_BRIEF${spc}=\)${spc}.*$|\1 "An Atari-ST and Amiga music player"|
+s|\(^INPUT${spc}=\)${spc}.*$|\1 @INPUTS@|
+s|\(^OUTPUT_DIRECTORY${spc}=\)${spc}.*$|\1 doc-@PACKAGE_VERSION@|
+s|\(^OPTIMIZE_OUTPUT_FOR_C${spc}=\)${spc}.*$|\1 YES|
+s|\(^QUIET${spc}=\)${spc}.*$|\1 YES|
+s|\(^FILE_PATTERNS${spc}=\)${spc}.*$|\1 *68.h|
+s|\(^RECURSIVE${spc}=\)${spc}.*$|\1 NO|
+s|\(^GENERATE_LATEX${spc}=\)${spc}.*$|\1 NO|
+s|\(^FILE_PATTERNS${spc}=\)${spc}.*$|\1 \*.h|
+s|\(^JAVADOC_AUTOBRIEF${spc}=\)${spc}.*$|\1 YES|
+s|\(^INPUT_FILTER${spc}=\)${spc}.*$|\1 "${SHELL} ./doc-filter.sh"|
+s|\(^ALIASES${spc}=\)${spc}.*$|\1 "nodoc=@xrefitem undoc \\\"not documented\\\" \\\\"Undocumented List\\\"" |
+EOF
+r=$?
+test $r -eq 0 || rm -- "$1"
+
+exit $r

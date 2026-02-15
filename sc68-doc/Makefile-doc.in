@@ -1,0 +1,27 @@
+# ,----------------------------------------------------------------------.
+# |                                                                      |
+# |                 sc68-doc -- doxygen specific rules                   |
+# |                                                                      |
+# |               Copyright (C) 2007-2014 Benjamin Gerard                |
+# |                                                                      |
+# |               <http://sourceforge.net/users/benjihan>                |
+# |                                                                      |
+# `----------------------------------------------------------------------'
+
+cfgname = @doxfile@
+doxygen = @doxygen@
+srcdir  = @srcdir@
+
+dox-clean-local:
+	rm -rf -- doc-*/ html/ latex/
+
+dox-all: $(cfgname) doc-filter.sh
+	$(doxygen) "$<"
+
+$(cfgname): gen-doxcfg.sh
+	${SHELL} "$<" "$@"
+
+# ----------------------------------------------------------------------
+# Local Variables:
+# mode: makefile
+# End:

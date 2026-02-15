@@ -1,0 +1,194 @@
+\input texinfo @c -*-texinfo-*-
+
+@c %**start of header
+@setfilename sourcer68.info
+@include version.texi
+@include package.texi
+@settitle @command{sourcer68}: @value{DESCRIPTION}
+@finalout
+@c %**end of header
+
+@dircategory @value{INFOCAT}
+@direntry
+* sourcer68: (sourcer68).             @value{DESCRIPTION}.
+@end direntry
+
+@synindex cp ky
+@setchapternewpage odd
+
+@c !BEGIN INTRO
+@ifinfo
+This is Edition @value{EDITION} of @cite{The @command{sourcer68} Manual},
+for @command{sourcer68} version @value{VERSION}, last updated @value{UPDATED}.
+@c !END INTRO
+
+@c !BEGIN COPYING
+@*Copyright @copyright{} 1998-2009 Benjamin Gerard
+
+Permission is granted to make and distribute verbatim copies of
+this manual upon condition that the  provided the copyright notice
+and this permission notice are preserved on all copies.
+@c !END COPYING
+@end ifinfo
+
+@titlepage
+@title sourcer68
+@subtitle 
+@sp 1
+@subtitle Edition @value{EDITION}, for @command{sourcer68} version @value{VERSION} @value{UPDATED}
+@c !BEGIN AUTHORS
+@author Benjamin Gerard
+@c !END AUTHORS
+@end titlepage
+@c @page
+
+@ifinfo
+@node Top, sourcer68 Program, (dir), (dir)
+@top @command{sourcer68}: 68000 disassembler/sourcer
+
+The @command{sourcer68} is used to disassemble 68000 program files.
+
+@ignore
+@c !BEGIN NAME
+MC68000 disassembler/sourcer
+@c !END NAME
+@end ignore
+
+@menu
+* sourcer68 Program::           The @command{sourcer68} Program
+* Options Summary::             List of command line options
+* Entry-List::                  Entry-list syntax
+* Input::                       Supported Input files
+@end menu
+
+@center manual for sourcer68 version @value{VERSION} edited on @value{UPDATED}
+
+@end ifinfo
+
+@node sourcer68 Program, Options Summary, Top, Top
+@section The @command{sourcer68} Program
+
+@section Description
+@c !BEGIN DESCRIPTION
+@command{sourcer68} is a program to disassemble 68000 programs. It
+supports several input format such as raw-binary, Atari TOS files or
+sc68 files.
+@c !END DESCRIPTION
+
+@c !BEGIN SYNOPSIS
+@section Synopsis
+@display
+@command{sourcer68 [OPTION] <input>}
+@end display
+@c !END SYNOPSIS
+
+@node Options Summary, Entry-List, sourcer68 Program, Top
+@c !BEGIN OPTIONS
+@section Options Summary
+@table @samp
+@item @option{--help}
+      Display help message and exit.
+@item @option{--version}
+      Display version and exit.
+@item @option{--reloc=[yes|no|auto]}
+      Apply TOS relocation (default=auto).
+@item @option{--tab=[STRING]}
+      Set tabulation string.
+@item @option{--opcode}
+      Print opcodes.
+@item @option{--ascii}
+      Convert immediat value to ASCII string if suitable.
+@item @option{--no-symbol}
+      Disable symbol in disassembly output.
+@item @option{--org=[ADDR]}
+      Load address (origin) (default:0x8000)
+@item @option{--entry=[ENTRY-LIST]}
+      Set disassembly entry points (default:+0).
+
+      @xref{Entry-List}.
+@item @option{--sc68-data=path}
+      Set shared resource path (prior to @env{SC68_DATA})
+@item @option{--sc68-user=path}
+      Set user resource path (prior to @env{SC68_USER})
+@item @option{--sc68-music=path}
+      Set local music path (prior to @env{SC68_MUSIC})
+@item @option{--sc68-rmusic=path}
+      Set remote music path (prior to @env{SC68_RMUSIC})
+@end table
+@c !END OPTIONS
+
+@node Entry-List, Input, Options Summary, Top
+@c !BEGIN ENTRYLIST
+@section Entry-list
+Entry-list is used to specify disassembly entry point. By default
+disassembly starts at the beginning of the file (address +0). The
+disassembly continue by tracking all branch instructions (and some
+other tricks outside of the scope of the document). Sometime some part
+of code that should be disassemble are not. So entry-list allow to fix
+this.
+@subsection Syntax
+@table @samp
+@item ENTRY-LIST := ENTRY|RANGE(,ENTRY|RANGE ...)
+A coma (,) separated list of ENTRY or RANGE
+@item ENTRY := (+|l ...)NUMBER([+-/*&|^<>]NUMBER...)
+ENTRY specify an entry-point address from which a new disassembler
+pass will be started. If an ENTRY begins with a plus (+) the address
+is relative to the program start address (origin). The number can be
+an expression mixing C-like numbers, operators and parenthesis
+'()'. Operators are '+-/*&|^<>' with '<' and '>' for arithmetic
+shifting. Beware of using proper parenthesis since operators have no
+precedence. Using one or more prefix 'l' for indirection (just like
+'*' unary C operator).
+@item RANGE := [ENTRY,ENTRY]
+A range starts as many passes it needs to disassemble the code in the
+address range. Using indirection 'l' operator before a range have a
+special meaning. In this case the range is used a an indirect table of
+entries. In the same way the unary plus '+' operator makes both values
+of the range relative to the origin.
+@end table
+@subsection Example
+--entry=+10,+0x44,0x1000+(5*4),+[0x40-0x80]
+@c !END ENTRYLIST
+
+@node Input,  , Entry-List, Top
+@c !BEGIN INPUT
+@section Input
+Supported input format are binary, Atari-TOS and possibly sc68 files
+(depends on configuration). If sc68 files are supported all sc68
+compatible URL will be supported. It may include a lot of them in case
+file68 was configured with curl support.
+
+@subsection binary
+All raw data files. Default entry point is the start of the file.
+
+@subsection Atari-TOS
+Atari ST .tos or .prg files. When a TOS file is given
+@command{sourcer68} performs a relocation operation based on TOS
+relocation table format (unless --reloc=no is given). TOS files can
+have several sections. Most common sections are TEXT, DATA and
+BSS. The disassembly output keeps track of these sections
+
+@subsection sc68 files
+All sc68 compatible files (native .sc68 and sndh files). sc68 files
+support is somehow limited. Currently it only works if with the
+default music and only if this music used no external replay resource.
+Ideally it should be improve to create a source code that produces an
+sc68 file... A lot to do there !! 
+@c !END INPUT
+
+
+@ignore
+@c !BEGIN SEEALSO
+The full documentation for @command{sourcer68} is maintained as a
+Texinfo manual. If the @command{info} and @command{sourcer68} programs
+are properly installed at your site, the command
+
+@command{info sourcer68}
+
+should give you access to the complete manual.
+@c !END SEEALSO
+@end ignore
+
+@page
+@contents
+@bye

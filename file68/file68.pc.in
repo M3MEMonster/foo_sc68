@@ -1,0 +1,26 @@
+# -*- mode:sh; sh-basic-offset:2; indent-tabs-mode:nil -*-
+#
+# pkg-config file for @PACKAGE_NAME@
+#
+# (C) 2011-2015 Benjamin Gerard <http://sourceforge.net/users/benjihan>
+#
+# Distributed under the term of the GPL3+
+
+version=@PACKAGE_VERSION@
+email=@PACKAGE_BUGREPORT@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+features=@file68_features@
+
+Name:             @PACKAGE_NAME@
+Version:          ${version}
+Description:      @PACKAGE_SHORTDESC@
+URL:              @PACKAGE_URL@
+Requires:         @PAC_REQUIRES@
+Requires.private: @PAC_PRIVREQ@
+Conflicts:        @PAC_CONFLICTS@
+Libs:             @PAC_LFLAGS@
+Libs.private:     @PAC_PRIVLIB@
+Cflags:           @PAC_CFLAGS@

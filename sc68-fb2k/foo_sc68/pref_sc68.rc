@@ -1,0 +1,48 @@
+// SC68 Preferences dialog resource
+
+#include <windows.h>
+#include <commctrl.h>
+#include "pref_resource.h"
+
+#ifndef IDC_STATIC
+#define IDC_STATIC (-1)
+#endif
+
+IDD_SC68_PREFERENCES DIALOGEX 0, 0, 332, 240
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "General", IDC_STATIC, 7, 7, 318, 62
+
+    RTEXT           "Sampling:", IDC_STATIC, 14, 26, 50, 8
+    COMBOBOX        IDC_SC68_SPR, 70, 24, 65, 80, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_SC68_USRSPR, 142, 24, 39, 12, ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "", IDC_SC68_SPRSPIN, "msctls_updown32", UDS_ARROWKEYS | UDS_AUTOBUDDY | UDS_SETBUDDYINT, 181, 24, 11, 12
+    LTEXT           "Hz", IDC_STATIC, 196, 26, 10, 8
+
+    RTEXT           "Default time:", IDC_STATIC, 212, 26, 52, 8
+    EDITTEXT        IDC_SC68_DEFTIME, 268, 24, 35, 12, ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "", IDC_SC68_TIMESPIN, "msctls_updown32", UDS_ARROWKEYS | UDS_AUTOBUDDY | UDS_SETBUDDYINT, 303, 24, 11, 12
+
+    RTEXT           "aSIDifier:", IDC_STATIC, 14, 49, 50, 8
+    COMBOBOX        IDC_SC68_ASID, 70, 47, 65, 80, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    GROUPBOX        "YM-2149", IDC_STATIC, 7, 77, 318, 78
+
+    RTEXT           "Simulation model:", IDC_STATIC, 14, 96, 78, 8
+    COMBOBOX        IDC_SC68_ENGINE, 98, 94, 218, 80, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    RTEXT           "Filter:", IDC_STATIC, 14, 116, 78, 8
+    COMBOBOX        IDC_SC68_FILTER, 98, 114, 218, 80, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    RTEXT           "Volume model:", IDC_STATIC, 14, 136, 78, 8
+    COMBOBOX        IDC_SC68_VOLMODEL, 98, 134, 218, 80, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    GROUPBOX        "Amiga", IDC_STATIC, 7, 163, 318, 55
+
+    LTEXT           "L/R Blend", IDC_STATIC, 14, 186, 38, 8
+    LTEXT           "L", IDC_STATIC, 60, 200, 8, 8
+    CONTROL         "", IDC_SC68_BLEND, "msctls_trackbar32", TBS_BOTH | WS_TABSTOP, 68, 178, 190, 25
+    LTEXT           "R", IDC_STATIC, 264, 200, 8, 8
+    AUTOCHECKBOX    "Filter", IDC_SC68_AGAFILTER, 283, 186, 32, 10
+END

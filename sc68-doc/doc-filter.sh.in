@@ -1,0 +1,21 @@
+# -*- sh -*-
+#
+# @file    doc-filter.sh
+# @author  Benjamin Gerard
+# @brief   Filter doxygen documented files.
+# 
+
+srcdir="@srcdir@"
+shell=@shell@
+SHELL=@SHELL@
+
+# Remove  
+remove_api='s/^[A-Z]\+68_\(API\|EXTERN\)[[:space:]]*//g'
+remove_def_api='s/^#[[:space:]]*define[[:space:]]\+[A-Z]\+68_\(API\|EXTERN\).*$//'
+#   define DESA68_API
+
+echo "FILTERING $1" 1>&2
+exec sed "$1" -f - <<EOF
+${remove_def_api}
+${remove_api}
+EOF
