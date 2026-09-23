@@ -131,12 +131,11 @@ void input_sc68::get_info(t_uint32 p_subsong, file_info & p_info, abort_callback
     sc68_music_info(m_sc68, use, p_subsong, 0);
   }
 
-  p_info.set_length(use->trk.time_ms/1000u);
+  p_info.set_length(use->trk.time_ms/1000.0);
   pfc::string8 codec(use->dsk.tag[TAG68_ID_FORMAT].val);
   p_info.info_set("codec", codec.upperCase());
 
   p_info.info_set("encoding","synthesized");
-  p_info.info_set_int("samplerate", sc68_cntl(m_sc68, SC68_GET_SPR));
   p_info.info_set_int("channels",2);
   p_info.info_set_int("bitspersample", 16);
 
@@ -172,6 +171,8 @@ t_filestats2 input_sc68::get_stats2(unsigned f, abort_callback& p_abort)
 void input_sc68::decode_initialize(t_uint32 p_subsong,unsigned p_flags,abort_callback & p_abort)
 {
   m_subsong = p_subsong;
+
+  first_block = true;
 
   sc68_cntl(m_sc68, SC68_SET_ASID, g_ym_asid);
 
@@ -220,6 +221,8 @@ void input_sc68::decode_seek(double p_seconds,abort_callback & p_abort)
 {
   const int target_ms = (int)(p_seconds * 1000.0);
 
+  first_block = true;
+
   // Restart the current track from the beginning
   sc68_cntl(m_sc68, SC68_SET_ASID, g_ym_asid);
 
@@ -255,7 +258,14 @@ bool input_sc68::decode_can_seek()
 
 bool input_sc68::decode_get_dynamic_info(file_info & p_out, double & p_timestamp_delta)
 {
-  return false;
+    if (first_block) {
+        p_out.info_set_int("samplerate", sc68_cntl(m_sc68, SC68_GET_SPR));
+        first_block = false;
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 //! See: input_decoder::get_dynamic_info_track(). Valid after decode_initialize().

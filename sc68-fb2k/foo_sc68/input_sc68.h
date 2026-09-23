@@ -43,6 +43,8 @@ public:
   static int g_counter;
   static volatile LONG g_instance;
 
+  bool first_block = false;
+
   input_sc68();
   ~input_sc68();
 
@@ -51,13 +53,13 @@ public:
   void open(service_ptr_t<file>,
             const char *, t_input_open_reason, abort_callback &);
   unsigned get_subsong_count();
-  t_uint32 input_sc68::get_subsong(unsigned);
+  t_uint32 get_subsong(unsigned);
   void get_info(t_uint32, file_info &, abort_callback &);
   t_filestats2 get_stats2(unsigned f, abort_callback& p_abort);
   t_filestats get_file_stats(abort_callback & p_abort);
   void decode_initialize(t_uint32,unsigned,abort_callback &);
   bool decode_run(audio_chunk &,abort_callback &);
-  void input_sc68::decode_seek(double,abort_callback &);
+  void decode_seek(double,abort_callback &);
   bool decode_can_seek();
   bool decode_get_dynamic_info(file_info &, double &);
   bool decode_get_dynamic_info_track(file_info &, double &);

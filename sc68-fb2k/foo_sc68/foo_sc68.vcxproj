@@ -125,11 +125,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "C:\Program Files (x86)\foobar2000\components\$(TargetFileName)"
-</Command>
+      <Command>powershell.exe -NoProfile -Command "$ErrorActionPreference='Stop'; $zip=Join-Path '$(TargetDir)' 'foo_sc68.zip'; $package=Join-Path '$(TargetDir)' 'foo_sc68.fb2k-component'; Compress-Archive -LiteralPath '$(TargetPath)' -DestinationPath $zip -Force; Move-Item -LiteralPath $zip -Destination $package -Force"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy $(TargetFileName) to foobar install</Message>
+      <Message>Pack $(TargetFileName)</Message>
     </PostBuildEvent>
     <ProjectReference />
   </ItemDefinitionGroup>
@@ -146,22 +145,22 @@
     <ClCompile Include="vfs_sc68.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\Foobar2000SDK-2025\foobar2000\foobar2000_component_client\foobar2000_component_client.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\Foobar2000SDK-2025\foobar2000\foobar2000_component_client\foobar2000_component_client.vcxproj">
       <Project>{71ad2674-065b-48f5-b8b0-e1f9d3892081}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\Foobar2000SDK-2025\foobar2000\helpers\foobar2000_sdk_helpers.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\Foobar2000SDK-2025\foobar2000\helpers\foobar2000_sdk_helpers.vcxproj">
       <Project>{ee47764e-a202-4f85-a767-abdab4aff35f}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\Foobar2000SDK-2025\foobar2000\SDK\foobar2000_SDK.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\Foobar2000SDK-2025\foobar2000\SDK\foobar2000_SDK.vcxproj">
       <Project>{e8091321-d79d-4575-86ef-064ea1a4a20d}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\Foobar2000SDK-2025\foobar2000\shared\shared.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\Foobar2000SDK-2025\foobar2000\shared\shared.vcxproj">
       <Project>{054c606b-17bf-4540-ac4e-a9a7243628b8}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\Foobar2000SDK-2025\libPPUI\libPPUI.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\Foobar2000SDK-2025\libPPUI\libPPUI.vcxproj">
       <Project>{7729eb82-4069-4414-964b-ad399091a03f}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\Foobar2000SDK-2025\pfc\pfc.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\Foobar2000SDK-2025\pfc\pfc.vcxproj">
       <Project>{ebfffb4e-261d-44d3-b89c-957b31a0bf9c}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\sc68-msvc\file68\file68.vcxproj">
