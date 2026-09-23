@@ -2303,8 +2303,7 @@ static void music_info(sc68_t * sc68, sc68_music_info_t * f, const disk68_t * d,
   f->rate        = m->frq;
   f->replay      = m->replay ? m->replay : "built-in";
   f->dsk.track   = d->def_mus+1;
-  f->dsk.time_ms = sc68
-    ? sc68->tinfo[0].len_ms : calc_disk_len(d, loops);
+  f->dsk.time_ms = sc68 ? sc68->tinfo[0].len_ms : calc_disk_len(d, loops);
   strtime68(f->dsk.time, f->tracks, (f->dsk.time_ms+999u)/1000u);
   f->dsk.ym      = !!(d->hwflags & SC68_PSG);
   f->dsk.ste     = !!(d->hwflags & (SC68_DMA|SC68_LMC));
@@ -2315,8 +2314,7 @@ static void music_info(sc68_t * sc68, sc68_music_info_t * f, const disk68_t * d,
   f->dsk.tag     = (sc68_tag_t *) d->tags.array;
 
   f->trk.track   = track;
-  f->trk.time_ms = sc68
-    ? sc68->tinfo[track].len_ms : calc_track_len(d, track, loops);
+  f->trk.time_ms = sc68 ? sc68->tinfo[track].len_ms : calc_track_len(d, track, loops);
   strtime68(f->trk.time, track,(f->trk.time_ms+999u)/1000u);
 
   f->trk.ym    = !! (m->hwflags & SC68_PSG);

@@ -45,8 +45,8 @@ static pfc::string_formatter g_get_component_about()
 
 // Declare our component
 DECLARE_COMPONENT_VERSION(
-  "sc68 for foobar2000",
-  "1.0.0",
+  "SC68 Decoder",
+  "1.1",
   g_get_component_about()
 );
 
