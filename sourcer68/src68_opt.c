@@ -29,13 +29,16 @@
 
 #include "src68_opt.h"
 
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
 #ifdef HAVE_GETOPT_H
 # include <getopt.h>
+#else
+# include "../getopt-win/getopt.h"
+#define HAVE_GETOPT_H
+#define HAVE_GETOPT_LONG
+#define HAVE_STRUCT_OPTION
 #endif
+
+
 
 void opt_new(char * shortopts, const opt_t * longopts)
 {
@@ -93,3 +96,5 @@ char * opt_arg(void)
   return 0;
 #endif
 }
+
+

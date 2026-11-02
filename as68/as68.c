@@ -161,7 +161,7 @@ static int print_usage(void)
   puts(
     "Usage: as68 [OPTIONS] <input> ...\n"
     "\n"
-    "  A fast MC68000 macro assembler (build " PACKAGE_VERSION ").\n"
+    "  A fast MC68000 macro assembler (build 20090101 ).\n"
     );
 
   puts(
@@ -183,7 +183,7 @@ static int print_usage(void)
     "  --output <filename>\n"
     "  -o <filename>   Output filename (def:input.bin)\n"
     "\n"
-    "Visit <" PACKAGE_URL ">\n"
+    "Visit < http://sc68.atari.org >\n"
     "Report bugs to <benjihan -4t- users.sourceforge -d0t- net>"
     );
   return 0;

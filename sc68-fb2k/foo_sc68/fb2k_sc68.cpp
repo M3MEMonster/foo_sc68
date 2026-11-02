@@ -46,7 +46,7 @@ static pfc::string_formatter g_get_component_about()
 // Declare our component
 DECLARE_COMPONENT_VERSION(
   "SC68 Decoder",
-  "1.1",
+  "1.2",
   g_get_component_about()
 );
 

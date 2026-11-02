@@ -1,0 +1,48 @@
+#ifndef FILE68_FEATURES_H
+#define FILE68_FEATURES_H
+
+/**
+ * Defined if file68 supports !ice depacker (via unice68)
+ */
+#cmakedefine FILE68_UNICE68 1
+
+/**
+ * Defined if file68 supports deflate (via zlib).
+ */
+#cmakedefine FILE68_Z 1
+
+/**
+ * Defined if file68 supports remote files (via libcurl).
+ */
+#cmakedefine FILE68_CURL 1
+
+/**
+ * Defined if file68 supports audio (via libao).
+ */
+#cmakedefine FILE68_AO 1
+
+/**
+ * Minimal sampling rate.
+ */
+#cmakedefine FILE68_SPR_MIN 1
+#ifndef FILE68_SPR_MIN
+enum { FILE68_SPR_MIN = 8000 };
+#endif
+
+/**
+ * Maximal sampling rate.
+ */
+#cmakedefine FILE68_SPR_MAX 1
+#ifndef FILE68_SPR_MAX
+enum { FILE68_SPR_MAX = 96000 };
+#endif
+
+/**
+ * Default sampling rate.
+ */
+#cmakedefine FILE68_SPR_DEF 1
+#ifndef FILE68_SPR_DEF
+enum { FILE68_SPR_DEF = 44100 };
+#endif
+
+#endif

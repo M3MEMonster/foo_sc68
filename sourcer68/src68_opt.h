@@ -12,6 +12,7 @@
 #define SRC68_OPT_H
 
 #include "src68_def.h"
+# include "../getopt-win/getopt.h"
 
 typedef struct option opt_t;
 

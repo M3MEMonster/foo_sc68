@@ -1,0 +1,34 @@
+#pragma once
+
+#include "common_config.h"
+
+
+/* Name of package */
+#define PACKAGE "unice68"
+
+/* Define to the address where bug reports for this package should be sent. */
+#define PACKAGE_BUGREPORT "http://sourceforge.net/projects/sc68/"
+
+/* Package short description */
+#define PACKAGE_DESC "ice packer/depacker program and library. It is part of the sc68 project. Visit <http://sc68.atari.org>"
+
+/* Define to the full name of this package. */
+#define PACKAGE_NAME "unice68"
+
+/* Define to the full name and version of this package. */
+#define PACKAGE_STRING "unice68 20130728"
+
+/* Define to the one symbol short name of this package. */
+#define PACKAGE_TARNAME "unice68"
+
+/* Define to the home page for this package. */
+#define PACKAGE_URL "http://sc68.atari.org"
+
+/* Version number */
+#define PACKAGE_VERNUM 20130728
+
+/* Define to the version of this package. */
+#define PACKAGE_VERSION "20130728"
+
+/* Version number of package */
+#define VERSION "20130728"

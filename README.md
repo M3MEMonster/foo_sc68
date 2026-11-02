@@ -17,34 +17,26 @@ Based on https://sourceforge.net/p/sc68/code/HEAD/tree r600 version (2015-11-28)
 5. Merged SNDH Database of r713 to this version 
 
 ## Compatibility
-- foobar2000 **v2.0 or newer**, Windows, 32-bit **ONLY**.
-- Built against the foobar2000 SDK (2025-03-07).
+- foobar2000 **v2.0 or newer**, Windows 32-bit and 64-bit, MacOS
+- Built against the foobar2000 SDK (2026-09-17).
 
 ## Building from source
 
 ### Prerequisites
-- Visual Studio 2022 with the **Desktop development with C++** workload (and a Windows 10/11 SDK).
-- The official **foobar2000 SDK (2025-03-07 or compatible)**.
+- Visual Studio 2022 or above with the **Desktop development with C++** workload (and a Windows 10/11 SDK).
+- The official **foobar2000 SDK (2026-09-17 or compatible)**.
 - **WTL 10** (Windows Template Library).
 
-### Directory layout
+### Build steps
+Now the project uses CMake to build and manage.
+
 The project files reference the SDK with system environment variable `FB2KSDK`. So, you just need to add the variable with SDK loacation to your system then the project will recognize it. 
 
-WTL **MUST** be placed as below:
+Use WTL_ROOT CMake parameter to specify WTL location.
 
-```
-├─ Foobar2000SDK-2025\
-│  ├─ foobar2000\
-│  │  ├─ SDK\
-│  │  ├─ helpers\
-│  │  ├─ shared\
-│  │  └─ foobar2000_component_client\
-│  ├─ libPPUI\
-│  ├─ pfc\
-│  └─ WTL10_01_Release\Include\        <- WTL goes here
-```
-### Build steps
-1. Open `sc68-fb2k.sln`.
-2. Add all .vcxproj in foobar2000SDK (except `foo_sample`) and `sc68-msvc\zlib\zlib.vcxporj` to the solution. Then add all these as references to `foo_sc68`.
-3. Build **Release | Win32** and the post event will pack dll to .fb2k-component automatically
+## Third-party code and acknowledgments
+
+This repository includes `getopt-win/getopt.c` and `getopt-win/getopt.h` from [getopt-win](https://github.com/ludvikjerabek/getopt-win). Ludvik Jerabek adapted the Free Software Foundation's GNU getopt implementation for Microsoft Visual C. Copyright in these files remains with their respective copyright holders.
+
+The bundled `getopt-win` code is licensed under the [GNU Lesser General Public License v3.0 (LGPL-3.0)](https://github.com/ludvikjerabek/getopt-win/blob/getopt_glibc_2.42_port/LICENSE). Thanks to Ludvik Jerabek and the GNU getopt contributors for their work.
 

@@ -4,7 +4,6 @@
 //
 #define VS_VERSION_INFO                 1
 #define IDD_SC68_PREFERENCES            200
-#define IDC_SC68_SPR                    2001
 #define IDC_SC68_DEFTIME                2002
 #define IDC_SC68_TIMESPIN               2003
 #define IDC_SC68_ASID                   2004
@@ -15,10 +14,6 @@
 #define IDC_SC68_USRSPR                 2009
 #define IDC_SC68_SPRSPIN                2010
 #define IDC_SC68_AGAFILTER              2011
-
-#ifndef IDC_STATIC
-#define IDC_STATIC                      -1
-#endif
 
 // Next default values for new objects
 // 
