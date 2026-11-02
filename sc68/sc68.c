@@ -73,6 +73,11 @@
 #endif
 #ifdef HAVE_GETOPT_H
 # include <getopt.h>
+#else
+# include "../getopt-win/getopt.h"
+#define HAVE_GETOPT_H
+#define HAVE_GET_OPT_LONG
+#define HAVE_STRUCT_OPTION
 #endif
 
 

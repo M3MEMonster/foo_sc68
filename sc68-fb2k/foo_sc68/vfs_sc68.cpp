@@ -136,7 +136,7 @@ vfs68_fb2k::vfs68_fb2k(
   vfs.seekb   = isn_seek;
   vfs.seekf   = isn_seek;
 
-  path = p_path ? _strdup(p_path) : 0;
+  path = p_path ? strdup(p_path) : 0;
 }
 
 vfs68_fb2k::~vfs68_fb2k()

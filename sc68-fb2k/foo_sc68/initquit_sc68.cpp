@@ -23,6 +23,7 @@
  */
 
 #include "stdafx.h"
+#include "global_config.h"
 
 // sc68 message function: everything debug or trace will appears in the DEBUG log
 // anything else is printed in foobar2000 console accordingly.
@@ -47,10 +48,14 @@ static void message_cb(const int bit, sc68_t * sc68, const char *fmt, va_list li
   case msg68_INFO: case msg68_NOTICE:
     console::info(temp); break;
   default:
-    if (bit < msg68_DEBUG)
-      console::print(temp);
-    else
-      OutputDebugStringA(temp.toString());
+      if (bit < msg68_DEBUG)
+          console::print(temp);
+      else
+#ifdef _WIN32
+          OutputDebugStringA(temp.toString());
+#else
+          console::print(temp);
+#endif
     break;
   }
 }
@@ -72,21 +77,17 @@ namespace {
         #elif defined(_DEBUG)
             init.debug_set_mask = (1 << msg68_TRACE) - 1;
         #endif
+        
         if (!sc68_init(&init)) {
-            int engine = 0;
-
-            // aSID
-            g_ym_asid = sc68_cntl(0, SC68_GET_ASID);
-            if (g_ym_asid < 0 || g_ym_asid > 2)
-                g_ym_asid = SC68_ASID_ON;
-            msg68_debug("got default aSID: %d\n", g_ym_asid);
-            sc68_cntl(0, SC68_SET_ASID, SC68_ASID_ON); // Activate global aSID
-
-            // YM-engine
-            if (!sc68_cntl(0, SC68_GET_OPT, "ym-engine", &engine)) {
-                msg68_debug("got default engine: '%d'\n", engine);
-                g_ym_engine = !!engine;
-            }
+            sc68_cntl(0, SC68_SET_OPT_INT, "sampling-rate", (int)cfg_spr);
+            sc68_cntl(0, SC68_SET_OPT_INT, "default-time", (int)cfg_deftime);
+            sc68_cntl(0, SC68_SET_ASID, (int)cfg_asid);
+            sc68_cntl(0, SC68_SET_OPT_INT, "ym-engine", (int)cfg_ym_model);
+            sc68_cntl(0, SC68_SET_OPT_INT, "ym-filter", (int)cfg_ym_filter);
+            sc68_cntl(0, SC68_SET_OPT_INT, "ym-volmodel", (int)cfg_ym_volmodel);
+            sc68_cntl(0, SC68_SET_OPT_INT, "amiga-blend", (int)cfg_amiga_blend);
+            sc68_cntl(0, SC68_SET_OPT_INT, "amiga-filter", (int)cfg_amiga_filter);
+            
         }
         msg68_notice("SC68 component: %s - %s [%s]",
             __DATE__, __TIME__,
@@ -96,13 +97,11 @@ namespace {
             "Release"
         #endif
         );
+        
     }
 
     // On quit: shutdown sc68 library
     void on_quit() {
-        sc68_cntl(0, SC68_SET_OPT_INT, "ym-engine", !!g_ym_engine);
-        sc68_cntl(0, SC68_SET_ASID, SC68_ASID_ON);
-        sc68_cntl(0, SC68_CONFIG_SAVE);
         sc68_shutdown();
     }
 
